@@ -2,13 +2,14 @@
 
 A collection of configuration files.
 
-## Tmux
+## Installation
 
-To automatically launch `tmux` when opening terminal, set the terminal command
-to the following (assuming this repository is located at `~/.dotfiles`):
+The install process ensures the packages providing the configured applications
+are present, and creates links in the appropriate locations on the filesystem to
+the config files in this repository.
 
-```
-tmux -f .dotfiles/.tmux.conf
+```bash
+./install.sh
 ```
 
 ## License

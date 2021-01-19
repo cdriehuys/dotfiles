@@ -1,0 +1,16 @@
+" Filetype behavior
+filetype plugin on
+filetype indent on
+
+" Syntax highlighting
+syntax enable
+
+" Default to expanding tabs to 4 spaces
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
+" Shift navigation to match i3
+noremap j h
+noremap k j
+noremap l k
+noremap ; l
+
