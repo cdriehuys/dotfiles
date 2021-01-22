@@ -5,6 +5,9 @@ filetype indent on
 " Syntax highlighting
 syntax enable
 
+" Always display line numbers
+set number
+
 " Default to expanding tabs to 4 spaces
 set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 

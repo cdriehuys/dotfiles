@@ -1,0 +1,60 @@
+#!/bin/bash
+
+set -euf
+set -o pipefail
+
+target_size='3840x2160'
+
+usage() {
+    cat <<EOF
+Usage: wallpaper-generator SOURCE_DIR DEST_DIR
+
+Generate full-screen wallpapers from the images in SOURCE_DIR and place them in
+DEST_DIR.
+EOF
+}
+
+find_images() {
+    local target_dir="$1"
+    find "${target_dir}" -type f \( -name '*.jpg' -o -name '*.png' \) -print0
+}
+
+process_image() {
+    local image="$1"
+    local source_dir="$2"
+    local dest_dir="$3"
+
+    local image_dir="$(dirname "${image}")"
+    local extension="${image##*.}"
+    local image_base="$(basename "${image}" ".${extension}")"
+    local relative_dir="$(realpath --relative-to "${source_dir}" "${image_dir}")"
+    local target_image="${dest_dir}/${relative_dir}/${image_base}.png"
+    echo "Processing image: ${image}"
+
+    if [[ ! -d "$(dirname "${target_image}")" ]]; then
+        mkdir -p "$(dirname "${target_image}")"
+        echo "  - Created directory for destination: $(dirname "${target_image}")"
+    fi
+
+    if [[ -f "${target_image}" ]]; then
+        echo "  - Destination image exists: ${target_image}"
+    else
+        echo "  - Converting image..."
+        convert \
+            "${image}" \
+            -resize "${target_size}"'^' \
+            -gravity center \
+            -extent "${target_size}" \
+            "${target_image}"
+        echo "  - Converted to: ${target_image}"
+    fi
+}
+
+source_dir="$1"
+dest_dir="$2"
+
+find_images "${source_dir}" |
+    while IFS= read -r -d '' line; do
+        process_image "$line" "${source_dir}" "${dest_dir}"
+    done
+

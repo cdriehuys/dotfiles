@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -euf
+set -o pipefail
+
+lock_screens="${HOME}/Pictures/lock-screens"
+
+choose_lock_screen_image() {
+    find "${lock_screens}" -type f -name "*.png" | shuf -n 1
+}
+
+pgrep i3lock || i3lock --ignore-empty-password --image "$(choose_lock_screen_image)"
+
