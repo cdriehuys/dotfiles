@@ -16,3 +16,4 @@ mklink() {
 }
 
 mklink ./git/.gitconfig .gitconfig
+mklink ./vim/.vimrc .vimrc
