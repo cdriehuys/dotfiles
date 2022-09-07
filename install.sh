@@ -2,10 +2,16 @@
 
 set -euf
 
-# Get an absolute path from a relative one. Abstracted into a function in case
-# we need a separate implementation for different OSs later.
+# Get an absolute path from a relative one. Accounts for the existence of
+# `realpath` on linux and otherwise falls back to a similar replacement
+# function that works on Mac OS.
 abspath() {
-    realpath "$1"
+    if command -v realpath &> /dev/null; then
+        realpath "$1"
+    else
+	# Derived from: https://stackoverflow.com/a/3572105
+        [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+    fi
 }
 
 mklink() {
