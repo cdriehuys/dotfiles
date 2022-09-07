@@ -2,10 +2,10 @@
 
 set -euf
 
-if command -v delta &> /dev/null; then
+if command -v delta >/dev/null 2>&1; then
     pager="delta"
 else
-    pager="${PAGER}"
+    pager="${PAGER:-less}"
 fi
 
 $pager "$@"
