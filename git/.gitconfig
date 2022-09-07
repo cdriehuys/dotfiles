@@ -2,6 +2,9 @@
     email = chathan@driehuys.com
     name = Chathan Driehuys
 
+[includeIf "gitdir:~/projects/salesforce/"]
+    path = .gitconfig.d/salesforce.inc
+
 [core]
     pager = ~/.dotfiles/git/pager.sh
 
