@@ -4,3 +4,6 @@ set number
 " Show cursor position
 set ruler
 
+" Syntax highlighting
+syntax on
+
