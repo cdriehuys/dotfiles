@@ -6,7 +6,7 @@ set -euf
 # `realpath` on linux and otherwise falls back to a similar replacement
 # function that works on Mac OS.
 abspath() {
-    if command -v realpath &> /dev/null; then
+    if command -v realpath >/dev/null 2>&1; then
         realpath "$1"
     else
 	# Derived from: https://stackoverflow.com/a/3572105
