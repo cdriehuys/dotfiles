@@ -8,6 +8,9 @@
 [core]
     pager = ~/.dotfiles/git/pager.sh
 
+[init]
+	defaultBranch = main
+
 [interactive]
     diffFilter = delta --color-only
 [add.interactive]
