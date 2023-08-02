@@ -26,5 +26,8 @@ mkdir -p "${HOME}/.gitconfig.d"
 
 # Create links to config files
 mklink ./git/.gitconfig .gitconfig
-mklink ./git/salesforce.inc .gitconfig.d/salesforce.inc
 mklink ./vim/.vimrc .vimrc
+
+# Remove old links
+rm "${HOME}/.gitconfig.d/salesforce.inc" || true
+
