@@ -24,6 +24,21 @@ def create_link(src: Path, dest: Path):
     logger.info("Created link %s pointing to %s", dest, src)
 
 
+def customize_zsh():
+    create_link(BASE_PATH / "zsh" / ".zshrc", HOME / ".zshrc")
+
+    zsh_custom = HOME / ".oh-my-zsh" / "custom"
+    if not zsh_custom.exists():
+        logger.info("The path %s does not exist. Skipping ZSH customizations.")
+        return
+
+    logger.info("Installing ZSH customizations to %s", zsh_custom)
+    customizations = BASE_PATH / "zsh" / "customizations"
+    for customization in customizations.glob("*.zsh"):
+        target_path = zsh_custom / customization.name
+        create_link(customization, target_path)
+
+
 def main():
     logger.info("Starting dotfiles install.")
     logger.info("Base path: %s", BASE_PATH)
@@ -38,6 +53,9 @@ def main():
             logger.info("Removed deprecated path %s", path)
     logger.info("Cleanup finished")
 
+    customize_zsh()
+
+    create_link(BASE_PATH / "bash" / ".bashrc", HOME / ".bashrc")
     create_link(BASE_PATH / "git" / ".gitconfig", HOME / ".gitconfig")
     create_link(BASE_PATH / "vim" / ".vimrc", HOME / ".vimrc")
 
