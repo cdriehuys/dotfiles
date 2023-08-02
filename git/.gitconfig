@@ -6,7 +6,7 @@
     path = .gitconfig.d/salesforce.inc
 
 [core]
-    pager = ~/.dotfiles/git/pager.sh
+	pager = "pager=$(command -v delta); ${pager:-${PAGER:-less}}"
 
 [init]
 	defaultBranch = main
