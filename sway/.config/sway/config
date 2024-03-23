@@ -32,15 +32,16 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 exec kanshi
 
 ### Idle configuration
-set $lock swaylock -c 333333
+set $lock swaylock --daemonize --color 323232
 exec swayidle -w \
-    timeout 600 $lock \
+    timeout 600 '$lock' \
     timeout 570 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock
+    timeout 630 'systemctl suspend' \
+    before-sleep '$lock'
 
 # Manual lock
-set $lockman exec bash ~/.config/sway/lockman.sh
+set $lockman bash ~/.config/sway/lockman.sh
 bindsym $mod+Control+q exec $lockman
 
 ### Input configuration
@@ -217,5 +218,11 @@ bindsym XF86AudioLowerVolume exec pamixer --decrease 5
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5
 
 font pango:SourceCodePro Medium 11
+
+# Toggle the display with the lid state. This is important for when the laptop
+# is docked and does not automatically sleep when the lid is closed.
+set $laptop eDP-1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 include /etc/sway/config.d/*
