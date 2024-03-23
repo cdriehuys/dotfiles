@@ -1,4 +1,8 @@
-[time]
-command=date '+%Y-%m-%d %H:%M'
-interval=5
+[battery]
+label=⚡
+command=~/.config/i3blocks/scripts/battery.sh
+interval=10
 
+[time]
+command=echo " $(date '+%Y-%m-%d %H:%M') "
+interval=5
