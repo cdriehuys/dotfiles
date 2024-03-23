@@ -4,30 +4,13 @@ My dotfiles.
 
 ## Prerequisites
 
-Install `git`. Otherwise you can't clone the repository.
+You need `git` to clone the repository and `stow` to link files to the
+appropriate places.
 
 ## Installation
 
-Use `install.sh` to make all the appropriate symlinks.
+Clone the repository to `$HOME/.dotfiles`. The directory name may be something
+other than `.dotfiles`, but it must be in the `$HOME` directory so that `stow`
+creates links in the right place.
 
-## Useful Information
-
-### Changing Shells
-
-To change your shell, use:
-
-```bash
-chsh
-```
-
-Log out and back in for the change to take effect.
-
-### Git on Ubuntu
-
-The Git version from the default repositories on Ubuntu 18 is outdated. Add the
-Git PPA and upgrade Git:
-
-```bash
-sudo add-apt-repository ppa:git-core/ppa -y
-sudo apt upgrade git
-```
+Use `stow` on each desired bundle.
