@@ -7,4 +7,3 @@ swayidle \
 swaylock -c 333333
 # Kills last background task so idle timer doesn't keep running
 kill %%
-
