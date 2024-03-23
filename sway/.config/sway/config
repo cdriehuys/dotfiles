@@ -126,6 +126,12 @@ bindsym $mod+Control+q exec $lockman
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
+    # Swipe with 3+ fingers moves between workspaces. This shouldn't get
+    # confusing with multiple monitors because I don't use the trackpad when
+    # connected to external displays, so there's no ability to swipe.
+    bindgesture swipe:right workspace prev
+    bindgesture swipe:left workspace next
+
     bindsym $mod+Control+Shift+$left move workspace to output left
     bindsym $mod+Control+Shift+$right move workspace to output right
 
