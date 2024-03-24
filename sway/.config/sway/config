@@ -28,8 +28,10 @@ set $menu dmenu_path | wofi --show run | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
-# Start `kanshi` to manage connections of external displays
-exec kanshi
+# Start `kanshi` to manage connections of external displays. If we don't do this
+# on reloads (`exec` instead of `exec_always`), the displays revert to their
+# default settings when the config is reloaded.
+exec_always "pkill kanshi; kanshi"
 
 ### Idle configuration
 set $lock swaylock --daemonize --color 323232
@@ -227,11 +229,5 @@ bindsym XF86AudioLowerVolume exec pamixer --decrease 5; $refreshStatusVolume
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5; $refreshStatusVolume
 
 font pango:SourceCodePro Medium 11
-
-# Toggle the display with the lid state. This is important for when the laptop
-# is docked and does not automatically sleep when the lid is closed.
-set $laptop eDP-1
-bindswitch --reload --locked lid:on output $laptop disable
-bindswitch --reload --locked lid:off output $laptop enable
 
 include /etc/sway/config.d/*
