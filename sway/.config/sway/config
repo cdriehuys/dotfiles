@@ -228,6 +228,6 @@ bindsym XF86AudioMute exec pamixer --toggle-mute; $refreshStatusVolume
 bindsym XF86AudioLowerVolume exec pamixer --decrease 5; $refreshStatusVolume
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5; $refreshStatusVolume
 
-font pango:SourceCodePro Medium 11
+font pango:JetBrainsMono Nerd Font 11
 
 include /etc/sway/config.d/*
