@@ -4,7 +4,7 @@ set -euf
 
 full_status="$(acpi --battery)"
 percent="$(echo "${full_status}" | grep -E --only-matching '[0-9]{1,3}%')"
-remaining="$(echo "${full_status}" | grep -E --only-matching '[0-9:]+ remaining' || true)"
+remaining="$(echo "${full_status}" | grep -E --only-matching '[0-9:]+ (remaining|until charged)' || true)"
 
 # Return full and short text so we can optionally customize the background later
 # which MUST be the third line of output.
