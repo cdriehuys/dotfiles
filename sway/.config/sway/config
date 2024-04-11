@@ -31,7 +31,7 @@ exec_always "systemctl --user start sway-bg.service"
 # Start `kanshi` to manage connections of external displays. If we don't do this
 # on reloads (`exec` instead of `exec_always`), the displays revert to their
 # default settings when the config is reloaded.
-exec_always "pkill kanshi; kanshi"
+exec_always "pkill kanshi; exec kanshi"
 
 ### Idle configuration
 set $lock swaylock --daemonize --color 323232
