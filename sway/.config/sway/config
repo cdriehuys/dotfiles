@@ -25,8 +25,8 @@ set $menu dmenu_path | wofi --show run | xargs swaymsg exec --
 
 ### Output configuration
 
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# Trigger initial wallpaper picking.
+exec_always "systemctl --user start sway-bg.service"
 
 # Start `kanshi` to manage connections of external displays. If we don't do this
 # on reloads (`exec` instead of `exec_always`), the displays revert to their

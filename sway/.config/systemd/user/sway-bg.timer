@@ -1,0 +1,11 @@
+[Unit]
+Description=Wallpaper rotation timer
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+Persistent=false
+OnCalendar=*:0/59
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=Select a new background image
+
+[Service]
+ExecStart=%h/.config/sway/select-bg.py
+
+[Install]
+WantedBy=multi-user.target
