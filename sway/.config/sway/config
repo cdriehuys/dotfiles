@@ -200,9 +200,7 @@ bindsym $mod+r mode "resize"
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command i3blocks
+    swaybar_command waybar
 
     colors {
         statusline #ffffff
@@ -228,6 +226,12 @@ bindsym XF86AudioMute exec pamixer --toggle-mute; $refreshStatusVolume
 bindsym XF86AudioLowerVolume exec pamixer --decrease 5; $refreshStatusVolume
 bindsym XF86AudioRaiseVolume exec pamixer --increase 5; $refreshStatusVolume
 
+# Hide title bars because `waybar` displays them.
+default_border pixel 2
+default_floating_border normal 0
+
 font pango:JetBrainsMono Nerd Font 11
+
+for_window [title="Extension:.*Firefox"] floating enable
 
 include /etc/sway/config.d/*

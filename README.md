@@ -40,6 +40,7 @@ pacman -S git git-delta vim
 
 ```shell
 pacman -S acpi alacritty brightnessctl gnome-keyring greetd greetd-tuigreet \
-    i3blocks kanshi pamixer sway swaybg swayidle swaylock \
-    ttf-jetbrains-mono-nerd wl-clipboard wofi
+    kanshi pamixer sway swaybg swayidle swaylock ttf-jetbrains-mono-nerd \
+    waybar wl-clipboard wofi
 ```
+i3blocks

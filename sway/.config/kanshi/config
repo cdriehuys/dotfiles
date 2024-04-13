@@ -5,5 +5,5 @@ profile "docked" {
 }
 
 profile "laptop" {
-	output eDP-1 enable
+	output eDP-1 enable scale 1.25
 }
