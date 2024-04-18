@@ -23,6 +23,10 @@ set $term alacritty
 # on the original workspace that the command was run on.
 set $menu dmenu_path | wofi --show run | xargs swaymsg exec --
 
+# Notification center
+exec_always "pkill swaync; exec swaync"
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 ### Output configuration
 
 # Trigger initial wallpaper picking.
