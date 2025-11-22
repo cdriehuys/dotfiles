@@ -18,7 +18,8 @@ Clone the repository to `$HOME/.dotfiles`. The directory name may be something
 other than `.dotfiles`, but it must be in the `$HOME` directory so that `stow`
 creates links in the right place.
 
-Use `stow` on each desired bundle.
+Use `stow` on each desired bundle. In some cases, `stow --no-folding` may be
+desired to avoid symlinks that are too broad.
 
 ## Post-Installation Configuration
 
