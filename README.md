@@ -7,6 +7,11 @@ My dotfiles.
 You need `git` to clone the repository and `stow` to link files to the
 appropriate places.
 
+### ZSH
+
+In order to apply the ZSH config, ZSH and [Oh My ZSH](https://ohmyz.sh/) must be
+installed. It's much easier to do this before running `stow zsh`.
+
 ## Installation
 
 Clone the repository to `$HOME/.dotfiles`. The directory name may be something
@@ -14,6 +19,18 @@ other than `.dotfiles`, but it must be in the `$HOME` directory so that `stow`
 creates links in the right place.
 
 Use `stow` on each desired bundle.
+
+## Post-Installation Configuration
+
+Some bundles require manual steps after installation.
+
+### SSH
+
+Enable the SSH agent with:
+
+```shell
+systemctl --user enable --now ssh-agent
+```
 
 ## Config Dependencies
 
@@ -23,7 +40,13 @@ common tools that I like to have.
 **Arch Linux:**
 
 ```shell
-pacman -S bat bolt fd fwupd htop less ripgrep udisks2
+pacman -S bat bolt fd fwupd htop less ripgrep udisks2 vim
+```
+
+**Fedora:**
+
+```shell
+dnf install bat fd-find ripgrep vim-enhanced
 ```
 
 ### Git
@@ -31,7 +54,13 @@ pacman -S bat bolt fd fwupd htop less ripgrep udisks2
 **Arch Linux:**
 
 ```shell
-pacman -S git git-delta vim
+pacman -S git git-delta
+```
+
+**Fedora:**
+
+```shell
+dnf install git git-delta
 ```
 
 ### Sway
@@ -40,7 +69,6 @@ pacman -S git git-delta vim
 
 ```shell
 pacman -S acpi alacritty brightnessctl gnome-keyring greetd greetd-tuigreet \
-    kanshi pamixer sway swaybg swayidle swaylock ttf-jetbrains-mono-nerd \
-    waybar wl-clipboard wofi
+    i3blocks kanshi pamixer sway swaybg swayidle swaylock \
+    ttf-jetbrains-mono-nerd waybar wl-clipboard wofi
 ```
-i3blocks
